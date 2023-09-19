@@ -28,13 +28,11 @@ function Register() {
           </div>
 
           <div className="mb-6">
-            <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2 text-left">
+            <label htmlFor="confirmPassword" className="block text-gray-700 text-sm font-bold mb-2 text-left">
              Confirm Password
             </label>
-            <input type="password" id="password" name="password" className="w-full px-3 py-2 border rounded-lg" />
+            <input type="password" id="password" name="confirmPassword" className="w-full px-3 py-2 border rounded-lg" />
           </div>
-
-          
         </form>
 
         <div className="mt-4">
