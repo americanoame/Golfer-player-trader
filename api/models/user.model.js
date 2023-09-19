@@ -15,10 +15,7 @@ const userSchema = new mongoose.Schema({
             type: String,
             required: true,
         },
-        forgotPassword:{
-            type: String,
-            required: true,
-        }
+        
     
 }, {timestamps: true});
 
