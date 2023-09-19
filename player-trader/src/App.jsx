@@ -1,9 +1,18 @@
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Register from './pages/auth/Register';
+
 
 
 function App() {
   return (
-    <div>App</div>
-  )
+  <BrowserRouter>
+    <Navbar/>
+    <Routes>
+      <Route path="/register" element={<Register />} />
+    </Routes>
+  </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
