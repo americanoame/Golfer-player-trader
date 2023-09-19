@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom';
 
+
+
+
 function Register() {
   return (
     <div className="flex justify-center py-1">
