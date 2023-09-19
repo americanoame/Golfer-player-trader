@@ -24,3 +24,8 @@ dist-ssr
 *.sw?
 .env
 
+# Environment files (store secrets and sensitive information here)
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
