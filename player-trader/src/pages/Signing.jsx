@@ -1,11 +1,9 @@
 import { Link } from 'react-router-dom';
 
 
-
-
-function Register() {
+function Signing() {
   return (
-    <div className="flex justify-center py-1">
+    <div className="flex justify-center py-20">
       <div className="bg-white p-8 rounded-lg shadow-md w-96">
         <h2 className="text-2xl font-semibold mb-4 text-gray-500">Create an Account</h2>
         <form action="#" method="post">
@@ -29,23 +27,18 @@ function Register() {
             </label>
             <input type="password" id="password" name="password" className="w-full px-3 py-2 border rounded-lg" />
           </div>
-
-          <div className="mb-6">
-            <label htmlFor="confirmPassword" className="block text-gray-700 text-sm font-bold mb-2 text-left">
-             Confirm Password
-            </label>
-            <input type="password" id="password" name="confirmPassword" className="w-full px-3 py-2 border rounded-lg" />
-          </div>
         </form>
 
         <div className="mt-4">
-          <button className="w-full bg-red-500 text-white text-sm font-semibold py-2 rounded-lg hover:bg-red-600 transition duration-200">Register</button>
+          <button className="w-full bg-red-500 text-white text-sm font-semibold py-2 rounded-lg
+           hover:bg-red-600 transition duration-200 uppercase">Login</button>
         </div>
 
+
         <p className="text-gray-600 text-sm mt-4">
-          have an account{' '}
-          <Link to="/sign-in">
-            <button href="#" className="text-green-500">Sign In</button>
+          Do not have an account{' '}
+          <Link to="/signing">
+            <button href="#" className="text-green-500 ">Register</button>
           </Link>
         </p>
         <p className="text-red-700 mt-5"></p>
@@ -54,4 +47,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default Signing;

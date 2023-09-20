@@ -1,7 +1,7 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Register from './pages/Register';
-import Login from './pages/Login';
+import Signing from './pages/Signing';
+import Signup from './pages/Signup';
 
 
 
@@ -10,8 +10,8 @@ function App() {
   <BrowserRouter>
     <Navbar/>
     <Routes>
-      <Route path="/register" element={<Register />} />
-      <Route path="/login" element={<Login />} />
+      <Route path="/signing" element={<Signing />} />
+      <Route path="/signup" element={<Signup />} />
     </Routes>
   </BrowserRouter>
   );
