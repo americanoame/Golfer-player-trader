@@ -3,9 +3,9 @@ const Navbar = () => {
     <div className="mt-2">
       <nav className="container mx-auto ">
         <div className="flex justify-between items-center">
-          <a href="/" className="text-green-500 text-xl font-bold italic">
+          <a href="/" className="text-green-500 text-xl font-bold italic ml-4">
             {/* <span className="text-1xl text-red-500">⛳️</span> */}
-            <span className="text-5xl">🏌🏻‍♂️</span>
+            <span className="text-5xl ">🏌🏻‍♂️</span>
             <span className="text-4xl text-red-500 font-bold">G</span>olfertrader.com
           </a>
           <div className="space-x-4 mr-4 text-lg">

@@ -5,7 +5,7 @@ function Signing() {
   return (
     <div className="flex justify-center py-20">
       <div className="bg-white p-8 rounded-lg shadow-md w-96">
-        <h2 className="text-2xl font-semibold mb-4 text-gray-500">Create an Account</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-gray-500">Signing </h2>
         <form action="#" method="post">
           <div className="mb-4">
             <label htmlFor="username" className="block text-gray-700 text-sm font-bold mb-2 text-left">
