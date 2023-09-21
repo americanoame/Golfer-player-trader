@@ -1,50 +1,81 @@
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
+export default function SignIng() {
+  const [formData, setFormData] = useState({});
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-function Signing() {
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      setLoading(true);
+      setError(false);
+      const res = await fetch('/api/auth/signing', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      setLoading(false);
+      if (data.success === false) {
+        setError(true);
+        return;
+      }
+      navigate('/');
+    } catch (error) {
+      setLoading(false);
+      setError(true);
+    }
+  };
+
   return (
     <div className="flex justify-center py-20">
       <div className="bg-white p-8 rounded-lg shadow-md w-96">
         <h2 className="text-2xl font-semibold mb-4 text-gray-500">Signing </h2>
-        <form action="#" method="post">
-          <div className="mb-4">
-            <label htmlFor="username" className="block text-gray-700 text-sm font-bold mb-2 text-left">
-              Username
-            </label>
-            <input type="text" id="username" name="username" className="w-full px-3 py-2 border rounded-lg" />
-          </div>
-
+        <form onSubmit={handleSubmit} action="#" method="post">
           <div className="mb-4">
             <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2 text-left">
               Email
             </label>
-            <input type="email" id="email" name="email" className="w-full px-3 py-2 border rounded-lg" />
+            <input type="email" id="email" name="email" className="w-full px-3 py-2 border rounded-lg" onChange={handleChange} />
           </div>
 
           <div className="mb-6">
             <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2 text-left">
               Password
             </label>
-            <input type="password" id="password" name="password" className="w-full px-3 py-2 border rounded-lg" />
+            <input type="password" id="password" name="password" className="w-full px-3 py-2 border rounded-lg" onChange={handleChange} />
+          </div>
+
+          <div className="mt-4">
+            <button
+              className="w-full bg-red-500 text-white text-sm font-semibold py-2 rounded-lg
+           hover:bg-red-600 transition duration-200 uppercase"
+            >
+              Login
+            </button>
           </div>
         </form>
 
-        <div className="mt-4">
-          <button className="w-full bg-red-500 text-white text-sm font-semibold py-2 rounded-lg
-           hover:bg-red-600 transition duration-200 uppercase">Login</button>
-        </div>
-
-
         <p className="text-gray-600 text-sm mt-4">
           Do not have an account{' '}
-          <Link to="/signing">
-            <button href="#" className="text-green-500 ">Register</button>
+          <Link to="/signup">
+            <button href="#" className="text-green-500 ">
+              {loading ? 'Loading...' : 'Sign Up'}
+            </button>
           </Link>
         </p>
-        <p className="text-red-700 mt-5"></p>
+        <p className="text-red-700 mt-5">{error && 'Something went wrong!'}</p>
       </div>
     </div>
   );
 }
-
-export default Signing;
