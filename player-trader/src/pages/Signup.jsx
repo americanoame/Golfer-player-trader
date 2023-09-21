@@ -6,7 +6,7 @@ export default function SignUp() {
     username: '',
     email: '',
     password: '',
-    confirmPassword: '', 
+    confirmPassword: '',
   });
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -18,7 +18,6 @@ export default function SignUp() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
 
     if (formData.password !== formData.confirmPassword) {
       setError(true);
@@ -83,15 +82,9 @@ export default function SignUp() {
 
           <div className="mb-6">
             <label htmlFor="confirmPassword" className="block text-gray-700 text-sm font-bold mb-2 text-left">
-             Confirm Password
+              Confirm Password
             </label>
-            <input
-              type="password"
-              id="confirmPassword"
-              name="confirmPassword"
-              className="w-full px-3 py-2 border rounded-lg"
-              onChange={handleChange}
-            />
+            <input type="password" id="confirmPassword" name="confirmPassword" className="w-full px-3 py-2 border rounded-lg" onChange={handleChange} />
           </div>
 
           <div className="mt-4">
