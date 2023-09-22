@@ -100,7 +100,7 @@ export default function SignUp() {
             </button>
           </Link>
         </p>
-        <p className="text-red-700 mt-5">{error && 'Passwords do not match or something went wrong!'}</p>
+        <p className="text-red-700 mt-5">{error && 'Password does not match!'}</p>
       </div>
     </div>
   );
