@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { signInStart, signInSuccess, signInFailure } from '../redux/user/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import OAuth from '../components/OAuth';
 
 export default function SignIng() {
   const [formData, setFormData] = useState({});
@@ -42,7 +43,7 @@ export default function SignIng() {
   return (
     <div className="flex justify-center py-20">
       <div className="bg-white p-8 rounded-lg shadow-md w-96">
-        <h2 className="text-2xl font-semibold mb-4 text-gray-500">Signing </h2>
+        <h2 className="text-2xl font-semibold mb-4 text-gray-500 text-center">Sign In </h2>
         <form onSubmit={handleSubmit} action="#" method="post">
           <div className="mb-4">
             <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2 text-left">
@@ -59,21 +60,22 @@ export default function SignIng() {
           </div>
 
           <div className="mt-4">
-            <button
-              className="w-full bg-red-500 text-white text-sm font-semibold py-2 rounded-lg
+            <button className="w-full bg-red-500 text-white text-sm font-semibold py-2 rounded-lg
            hover:bg-red-600 transition duration-200 uppercase"
             >
-              Login
+              {loading ? 'Loading...' : 'Sign In'}
             </button>
           </div>
+          <OAuth />
         </form>
 
         <p className="text-gray-600 text-sm mt-4">
           Do not have an account{' '}
           <Link to="/signup">
             <button href="#" className="text-green-500 ">
-              {loading ? 'Loading...' : 'Sign Up'}
+              Sign Up
             </button>
+            
           </Link>
         </p>
         <p className="text-red-700 mt-5">{error ? error || 'Something went wrong!' : ''}</p>

@@ -1,4 +1,8 @@
+// import { Link } from 'react-router-dom';
+
 const Navbar = () => {
+
+
   return (
     <div className="mt-2">
       <nav className="container mx-auto ">
@@ -10,7 +14,9 @@ const Navbar = () => {
           </a>
           <div className="space-x-4 mr-4 text-lg">
             <a href="/signup" className="text-red-500 ">
-              Register
+              Sign Up 
+
+
             </a>
             <button onClick={() => (window.location.href = '/signing')} className="text-white text-lg
              bg-green-500 rounded-lg px-3 py-2 hover:bg-green-600 transition duration-300 ease-in-out">

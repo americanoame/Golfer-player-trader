@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import OAuth from '../components/OAuth';
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
@@ -56,7 +57,7 @@ export default function SignUp() {
   return (
     <div className="flex items-center justify-center py-20">
       <div className="bg-white p-8 rounded-lg shadow-md w-96">
-        <h2 className="text-2xl font-semibold mb-4 text-gray-500">Sign Up</h2>
+        <h2 className="text-2xl text-center font-semibold mb-4 text-gray-500">Sign Up</h2>
 
         <form onSubmit={handleSubmit} action="#" method="post">
           <div className="mb-4">
@@ -88,15 +89,19 @@ export default function SignUp() {
           </div>
 
           <div className="mt-4">
-            <button className="w-full bg-red-500 text-white text-sm font-semibold py-2 rounded-lg hover:bg-red-600 transition duration-200 uppercase">Sign up</button>
+            <button className="w-full bg-red-500 text-white text-sm font-semibold py-2 rounded-lg
+             hover:bg-red-600 transition duration-200 uppercase">
+             {loading ? 'Loading...' : 'Sign Up'}
+             </button>
           </div>
+          <OAuth />
         </form>
 
         <p className="text-gray-600 text-sm mt-4">
           Have an account{' '}
           <Link to="/signing">
-            <button href="#" className="text-blue-500">
-              {loading ? 'Loading...' : 'Sign In'}
+            <button href="#" className="text-green-500">
+            Sign in
             </button>
           </Link>
         </p>
