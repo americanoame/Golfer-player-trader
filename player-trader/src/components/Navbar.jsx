@@ -1,8 +1,19 @@
-// import { Link } from 'react-router-dom';
-import { useSelector } from "react-redux";
+import { useSelector,  useDispatch } from 'react-redux';
+import { signOut } from '../redux/user/userSlice';
 
-export default function Navbar()  {
-const {currentUser} = useSelector((state) => state.user);
+export default function Navbar() {
+  const { currentUser } = useSelector((state) => state.user);
+
+  const dispatch = useDispatch();
+
+  const handleSignOut = async () => {
+    try {
+      await fetch('/api/auth/signout');
+      dispatch(signOut());
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <div className="mt-2">
@@ -15,25 +26,31 @@ const {currentUser} = useSelector((state) => state.user);
           </a>
           <div className="space-x-4 mr-4 text-lg">
             <a href="/" className="text-red-500 ">
-              Home 
+              Home
             </a>
             <a href="/about" className="text-red-500 ">
-              About 
+              About
             </a>
 
-            <button onClick={() => (window.location.href = '/profile')}>
-             {currentUser ? (
-              <img src={currentUser.profilePicture} alt="profile" className="h-12 w-12 rounded-full 
-              object-cover mt-2" />
-             ):(
-              <h5>Sign In</h5>
-             )}
+            {currentUser ? (
+              <>
+              {/* <h1 className='text-red-700'>welcome: {currentUser.name} </h1> */}
+              <button onClick={handleSignOut} className="text-red-500 ml-4">Logout</button>
               
-            </button>
+                <button onClick={() => (window.location.href = '/profile')}>
+                  <img src={currentUser.profilePicture} alt="profile" className="h-12 w-12 rounded-full object-cover mt-2" />
+                </button>
+                
+              </>
+            ) : (
+              <button onClick={() => (window.location.href = '/profile')}>
+                <h5>Sign In</h5>
+              </button>
+              
+            )}
           </div>
         </div>
       </nav>
     </div>
   );
 }
-
