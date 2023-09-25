@@ -1,7 +1,8 @@
 // import { Link } from 'react-router-dom';
+import { useSelector } from "react-redux";
 
-const Navbar = () => {
-
+export default function Navbar()  {
+const {currentUser} = useSelector((state) => state.user);
 
   return (
     <div className="mt-2">
@@ -13,20 +14,26 @@ const Navbar = () => {
             <span className="text-4xl text-red-500 font-bold">G</span>olfertrader.com
           </a>
           <div className="space-x-4 mr-4 text-lg">
-            <a href="/signup" className="text-red-500 ">
-              Sign Up 
-
-
+            <a href="/" className="text-red-500 ">
+              Home 
             </a>
-            <button onClick={() => (window.location.href = '/signing')} className="text-white text-lg
-             bg-green-500 rounded-lg px-3 py-2 hover:bg-green-600 transition duration-300 ease-in-out">
-              Login
+            <a href="/about" className="text-red-500 ">
+              About 
+            </a>
+
+            <button onClick={() => (window.location.href = '/profile')}>
+             {currentUser ? (
+              <img src={currentUser.profilePicture} alt="profile" className="h-12 w-12 rounded-full 
+              object-cover mt-2" />
+             ):(
+              <h5>Sign In</h5>
+             )}
+              
             </button>
           </div>
         </div>
       </nav>
     </div>
   );
-};
+}
 
-export default Navbar;
