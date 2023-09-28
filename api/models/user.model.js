@@ -16,7 +16,15 @@ const userSchema = new mongoose.Schema({
             required: true,
         },
 
-       // this is the forth
+        temporaryPassword: { 
+            type: String,
+            resetPasswordExpires: Date, 
+        },
+
+        newPassword: { // Field to temporarily store the new password during reset
+            type: String,
+        },
+
         
         profilePicture: { // if the user did not provider any image i wanna add a default  picture
             type: String,
