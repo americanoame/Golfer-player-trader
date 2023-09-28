@@ -59,6 +59,8 @@ export default function SignIng() {
             <input type="password" id="password" name="password" className="w-full px-3 py-2 border rounded-lg" onChange={handleChange} />
           </div>
 
+          
+
           <div className="mt-4">
             <button className="w-full bg-red-500 text-white text-sm font-semibold py-2 rounded-lg
            hover:bg-red-600 transition duration-200 uppercase"
@@ -66,11 +68,20 @@ export default function SignIng() {
               {loading ? 'Loading...' : 'Sign In'}
             </button>
           </div>
+
+          <hr className="mt-5 border-gray-300" />
+          
           <OAuth />
+
+          <div className="text-red-500 mt-2 ml-2">
+            <small>
+              <Link to='/forgot-password'>Forgot Password: <span className="text-blue-500">Reset!</span></Link>
+            </small>
+          </div>
         </form>
 
         <p className="text-gray-600 text-sm mt-4">
-          Do not have an account{' '}
+          Do not have an account:{' '}
           <Link to="/signup">
             <button href="#" className="text-green-500 ">
               Sign Up

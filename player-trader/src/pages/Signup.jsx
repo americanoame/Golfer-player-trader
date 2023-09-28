@@ -88,12 +88,15 @@ export default function SignUp() {
             <input type="password" id="confirmPassword" name="confirmPassword" className="w-full px-3 py-2 border rounded-lg" onChange={handleChange} />
           </div>
 
+          
           <div className="mt-4">
             <button className="w-full bg-red-500 text-white text-sm font-semibold py-2 rounded-lg
              hover:bg-red-600 transition duration-200 uppercase">
              {loading ? 'Loading...' : 'Sign Up'}
              </button>
           </div>
+          <hr className="mt-5 border-gray-300" />
+
           <OAuth />
         </form>
 
