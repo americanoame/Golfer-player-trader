@@ -4,9 +4,6 @@ import { useState } from 'react';
 
 export default function Navbar() {
   const { currentUser } = useSelector((state) => state.user);
-
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const dispatch = useDispatch();
 
   const handleSignOut = async () => {
@@ -18,55 +15,56 @@ export default function Navbar() {
     }
   };
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  let Links = [
+    { name: 'Home', link: '/' },
+    { name: 'About', link: '/about' },
+  ];
+
+  let [open, setOpen] = useState(false);
 
   return (
-    <div className="mt-2">
-      <nav className="container mx-auto ">
-        <div className="flex justify-between items-center">
-          <a href="/" className="text-green-500 text-xl font-bold italic ml-4">
-            {/* <span className="text-1xl text-red-500">⛳️</span> */}
-            <span className="text-5xl">🏌🏻‍♂️</span>
-            <span className="text-4xl text-red-500 font-bold">G</span>olfertrader.com
-          </a>
+    <div className="relative z-10 w-full  top-0 left-0">
+      <nav className="container mx-auto md:flex items-center justify-between py-4 md:px-10 px-7">
+        <div className="font-bold text-2xl cursor-pointer flex items-center font-[Poppins] text-green-800">
+          <span className="text-5xl">🏌🏻‍♂️</span>
+          <span className="text-4xl text-red-500 font-bold">G</span>olfertrader.com
+        </div>
 
-          <button
-            onClick={toggleMenu}
-            data-collapse-toggle="navbar-default"
-            type="button"
-            className={`inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 ${
-              isMenuOpen ? 'active' : ''
-            }`}
-            aria-controls="navbar-default"
-            aria-expanded={isMenuOpen}
-            hidden={!isMenuOpen}
+        <div onClick={() => setOpen(!open)} className="text-3xl absolute right-8 top-6 cursor-pointer md:hidden">
+          <ion-icon name={open ? 'close' : 'menu'}></ion-icon>
+        </div>
+
+        <div>
+          <ul
+            className={`md:flex z-10 md:items-center md:pb-4 pb-12 absolute md:static ${
+              open ? 'bg-black top-20' : 'bg-transparent top-[-490px]'
+            } left-0 w-full md:pl-0 pl-9 md:w-auto transition-all duration-500 ease-in 
+            md:z-auto z-[-1]`}
           >
-            <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />
-            </svg>
-          </button>
-
-          <div className={`hidden w-full md:block  md:w-auto ${isMenuOpen ? 'block' : 'hidden'}`} id="navbar-default">
-            
-            
-            
-            <a href="/" className="text-red-500 mr-4">
-              Home
-            </a>
-            <a href="/about" className="text-red-500 mr-4">
-              About
-            </a>
+            {Links.map((link) => (
+              <li
+                key={link.name}
+                className={`md:ml-8 text-xl md:my-0 my-7 px-4  bg-transparent ${
+                  open ? 'md:bg-black' : 'md:bg-transparent'
+                } md:hover:bg-transparent rounded-lg`}
+              >
+                <a
+                  href={link.link}
+                  className="text-gray-800 
+                hover:text-green-400 duration-500"
+                >
+                  {link.name}
+                </a>
+              </li>
+            ))}
 
             {currentUser ? (
               <>
-                {/* <h1 className='text-red-700'>welcome: {currentUser.name} </h1> */}
                 <button onClick={handleSignOut} className="text-red-500 ml-4">
                   Logout
                 </button>
 
-                <button onClick={() => (window.location.href = '/profile')}>
+                <button className="mr-2" onClick={() => (window.location.href = '/profile')}>
                   <img src={currentUser.profilePicture} alt="profile" className="h-12 w-12 rounded-full object-cover mt-2" />
                 </button>
               </>
@@ -75,7 +73,7 @@ export default function Navbar() {
                 <h5>Sign In</h5>
               </button>
             )}
-          </div>
+          </ul>
         </div>
       </nav>
     </div>
